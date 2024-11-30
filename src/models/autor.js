@@ -49,7 +49,6 @@ class Autor {
     // o del retorna a quantidade de rows deletados
     return db('autores')
       .where({ id })
-      .del();
   }
 
   async salvar() {
@@ -62,6 +61,11 @@ class Autor {
     }
     const resultado = await this.criar();
     return resultado;
+  }
+
+  static async pegaLivrosPorAutor(autorId) {
+    return db('livros')
+      .where({ autor_id: autorId });
   }
 }
 
